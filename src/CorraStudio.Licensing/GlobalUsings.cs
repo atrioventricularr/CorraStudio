@@ -1,0 +1,10 @@
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using System.Text.Json;
+global using Microsoft.Extensions.Logging;
+global using CorraStudio.Licensing.Models;
+global using CorraStudio.Licensing.Mayar;
+global using CorraStudio.Licensing.Services;

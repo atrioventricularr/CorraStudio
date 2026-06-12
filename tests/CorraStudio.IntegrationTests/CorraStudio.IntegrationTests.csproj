@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>CorraStudio.IntegrationTests</RootNamespace>
+    <AssemblyName>CorraStudio.IntegrationTests</AssemblyName>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="xunit" Version="2.6.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.4" />
+    <PackageReference Include="Respawn" Version="6.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CorraStudio.Persistence\CorraStudio.Persistence.csproj" />
+    <ProjectReference Include="..\..\src\CorraStudio.Presentation.Wpf\CorraStudio.Presentation.Wpf.csproj" />
+  </ItemGroup>
+</Project>

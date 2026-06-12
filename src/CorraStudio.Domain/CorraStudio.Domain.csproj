@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>CorraStudio.Domain</RootNamespace>
+    <AssemblyName>CorraStudio.Domain</AssemblyName>
+  </PropertyGroup>
+</Project>

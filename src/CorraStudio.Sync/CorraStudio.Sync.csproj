@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>CorraStudio.Sync</RootNamespace>
+    <AssemblyName>CorraStudio.Sync</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CorraStudio.Domain\CorraStudio.Domain.csproj" />
+    <ProjectReference Include="..\CorraStudio.Application\CorraStudio.Application.csproj" />
+    <ProjectReference Include="..\CorraStudio.Persistence\CorraStudio.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.0" />
+  </ItemGroup>
+</Project>

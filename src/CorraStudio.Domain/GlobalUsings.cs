@@ -1,0 +1,14 @@
+global using System;
+global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using CorraStudio.Domain.Common;
+global using CorraStudio.Domain.Entities;
+global using CorraStudio.Domain.Enums;
+global using CorraStudio.Domain.ValueObjects;
+global using CorraStudio.Domain.Exceptions;
+global using CorraStudio.Domain.Interfaces.Repositories;
+global using CorraStudio.Domain.Interfaces.Services;
+global using CorraStudio.Domain.Events;

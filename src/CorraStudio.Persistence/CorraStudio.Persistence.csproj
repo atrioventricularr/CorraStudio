@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>CorraStudio.Persistence</RootNamespace>
+    <AssemblyName>CorraStudio.Persistence</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CorraStudio.Domain\CorraStudio.Domain.csproj" />
+    <ProjectReference Include="..\CorraStudio.Infrastructure\CorraStudio.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>

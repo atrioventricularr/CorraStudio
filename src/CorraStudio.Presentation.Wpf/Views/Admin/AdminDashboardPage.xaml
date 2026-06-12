@@ -1,0 +1,56 @@
+<Page x:Class="CorraStudio.Presentation.Wpf.Views.Admin.AdminDashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Admin Dashboard">
+    
+    <Grid Background="{StaticResource Gray100Brush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Tab Header -->
+        <Border Grid.Row="0" Background="{StaticResource PrimaryBrush}" Padding="10">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Content="Dashboard" 
+                             IsChecked="{Binding SelectedTab, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Dashboard'}"
+                             Command="{Binding TabCommand}" CommandParameter="Dashboard"
+                             Style="{StaticResource TabRadioButton}"/>
+                <RadioButton Content="Reports" 
+                             IsChecked="{Binding SelectedTab, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Reports'}"
+                             Command="{Binding TabCommand}" CommandParameter="Reports"
+                             Style="{StaticResource TabRadioButton}"/>
+                <RadioButton Content="Users" 
+                             IsChecked="{Binding SelectedTab, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Users'}"
+                             Command="{Binding TabCommand}" CommandParameter="Users"
+                             Style="{StaticResource TabRadioButton}"/>
+                <RadioButton Content="Backup" 
+                             IsChecked="{Binding SelectedTab, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Backup'}"
+                             Command="{Binding TabCommand}" CommandParameter="Backup"
+                             Style="{StaticResource TabRadioButton}"/>
+                <RadioButton Content="System" 
+                             IsChecked="{Binding SelectedTab, Converter={StaticResource StringToBoolConverter}, ConverterParameter='System'}"
+                             Command="{Binding TabCommand}" CommandParameter="System"
+                             Style="{StaticResource TabRadioButton}"/>
+                <RadioButton Content="Audit" 
+                             IsChecked="{Binding SelectedTab, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Audit'}"
+                             Command="{Binding TabCommand}" CommandParameter="Audit"
+                             Style="{StaticResource TabRadioButton}"/>
+            </StackPanel>
+        </Border>
+        
+        <!-- Tab Content -->
+        <ScrollViewer Grid.Row="1">
+            <ContentControl Content="{Binding SelectedTabContent}"/>
+        </ScrollViewer>
+        
+        <!-- Refresh Button -->
+        <Button Grid.Row="0" 
+                Content="⟳" 
+                Style="{StaticResource SecondaryButton}"
+                Width="40" Height="35"
+                HorizontalAlignment="Right"
+                Margin="0,5,20,5"
+                Command="{Binding RefreshCommand}"/>
+    </Grid>
+</Page>

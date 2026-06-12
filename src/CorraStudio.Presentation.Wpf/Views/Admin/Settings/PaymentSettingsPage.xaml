@@ -1,0 +1,145 @@
+<Page x:Class="CorraStudio.Presentation.Wpf.Views.Admin.Settings.PaymentSettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Payment Settings">
+    
+    <ScrollViewer>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Provider Selection -->
+            <Border Grid.Row="0" Background="{StaticResource Gray200Brush}" Padding="10" CornerRadius="5">
+                <StackPanel>
+                    <TextBlock Text="Payment Provider" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton Content="Doku" 
+                                     IsChecked="{Binding SelectedProvider, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Doku'}"
+                                     GroupName="Provider"
+                                     Margin="0,0,20,0"/>
+                        <RadioButton Content="QRIS Static" 
+                                     IsChecked="{Binding SelectedProvider, Converter={StaticResource StringToBoolConverter}, ConverterParameter='QRIS'}"
+                                     GroupName="Provider"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            
+            <!-- Doku Settings -->
+            <Border Grid.Row="1" Margin="0,20,0,0" Padding="10" CornerRadius="5" BorderBrush="{StaticResource Gray300Brush}" BorderThickness="1"
+                    Visibility="{Binding SelectedProvider, Converter={StaticResource StringToVisibilityConverter}, ConverterParameter='Doku'}">
+                
+                <StackPanel>
+                    <TextBlock Text="Doku API Configuration" FontWeight="Bold" FontSize="16" Margin="0,0,0,15"/>
+                    
+                    <Grid Margin="0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Client ID" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding DokuClientId}" Width="300" HorizontalAlignment="Left"/>
+                        
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Shared Key" VerticalAlignment="Center" Margin="0,10,0,0"/>
+                        <PasswordBox Grid.Row="1" Grid.Column="1" Width="300" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Environment" VerticalAlignment="Center" Margin="0,10,0,0"/>
+                        <ComboBox Grid.Row="2" Grid.Column="1" Width="200" HorizontalAlignment="Left" Margin="0,10,0,0"
+                                  SelectedItem="{Binding DokuEnvironment}">
+                            <ComboBoxItem Content="Sandbox"/>
+                            <ComboBoxItem Content="Production"/>
+                        </ComboBox>
+                        
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Payment Methods" FontWeight="Bold" Margin="0,20,0,5"/>
+                        
+                        <StackPanel Grid.Row="4" Grid.Column="1">
+                            <CheckBox Content="QRIS" IsChecked="{Binding DokuEnableQRIS}" Margin="0,5"/>
+                            <CheckBox Content="Virtual Account" IsChecked="{Binding DokuEnableVA}" Margin="0,5"/>
+                            <CheckBox Content="E-Wallet (OVO, Dana, etc)" IsChecked="{Binding DokuEnableEWallet}" Margin="0,5"/>
+                            <CheckBox Content="Convenience Store" IsChecked="{Binding DokuEnableConvenienceStore}" Margin="0,5"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+            
+            <!-- QRIS Static Settings -->
+            <Border Grid.Row="2" Margin="0,20,0,0" Padding="10" CornerRadius="5" BorderBrush="{StaticResource Gray300Brush}" BorderThickness="1"
+                    Visibility="{Binding SelectedProvider, Converter={StaticResource StringToVisibilityConverter}, ConverterParameter='QRIS'}">
+                
+                <StackPanel>
+                    <TextBlock Text="QRIS Static Configuration" FontWeight="Bold" FontSize="16" Margin="0,0,0,15"/>
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="QR Code Data" VerticalAlignment="Top"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding QrisStaticData}" Height="80" TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto" Width="400" HorizontalAlignment="Left"/>
+                        
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Fixed Amount (IDR)" VerticalAlignment="Center" Margin="0,10,0,0"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding QrisFixedAmount}" Width="200" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Merchant Name" VerticalAlignment="Center" Margin="0,10,0,0"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding QrisMerchantName}" Width="300" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Merchant City" VerticalAlignment="Center" Margin="0,10,0,0"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding QrisMerchantCity}" Width="200" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+            
+            <!-- Buttons -->
+            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30">
+                <Button Content="Test Connection" 
+                        Style="{StaticResource SecondaryButton}"
+                        Command="{Binding TestConnectionCommand}"
+                        Width="150"
+                        Margin="5"
+                        Visibility="{Binding SelectedProvider, Converter={StaticResource StringToVisibilityConverter}, ConverterParameter='Doku'}"/>
+                <Button Content="Save Settings" 
+                        Style="{StaticResource SuccessButton}"
+                        Command="{Binding SaveCommand}"
+                        Width="150"
+                        Margin="5"/>
+                <Button Content="Cancel" 
+                        Style="{StaticResource DangerButton}"
+                        Width="100"
+                        Margin="5"/>
+            </StackPanel>
+            
+            <!-- Status -->
+            <Border Grid.Row="5" Background="{StaticResource Gray200Brush}" Padding="10" CornerRadius="5" Margin="0,20,0,0">
+                <StackPanel>
+                    <TextBlock Text="ℹ️ Information" FontWeight="Bold"/>
+                    <TextBlock Text="• Doku API keys are encrypted before storage" Margin="0,5,0,0"/>
+                    <TextBlock Text="• Use Sandbox environment for testing first"/>
+                    <TextBlock Text="• QRIS Static only works with fixed amount payments"/>
+                    <TextBlock Text="• Changes take effect immediately"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Page>

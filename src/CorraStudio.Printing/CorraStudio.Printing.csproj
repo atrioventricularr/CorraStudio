@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>CorraStudio.Printing</RootNamespace>
+    <AssemblyName>CorraStudio.Printing</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CorraStudio.Domain\CorraStudio.Domain.csproj" />
+    <ProjectReference Include="..\CorraStudio.Application\CorraStudio.Application.csproj" />
+    <ProjectReference Include="..\CorraStudio.Rendering\CorraStudio.Rendering.csproj" />
+  </ItemGroup>
+</Project>

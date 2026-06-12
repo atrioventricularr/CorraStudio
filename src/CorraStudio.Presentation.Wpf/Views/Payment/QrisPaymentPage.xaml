@@ -1,0 +1,104 @@
+<Page x:Class="CorraStudio.Presentation.Wpf.Views.Payment.QrisPaymentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="QRIS Payment">
+    
+    <Grid Background="{StaticResource Gray100Brush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Header -->
+        <Border Grid.Row="0" Background="{StaticResource PrimaryBrush}" Padding="20">
+            <StackPanel>
+                <TextBlock Text="QRIS Payment" 
+                           FontSize="28" 
+                           FontWeight="Bold" 
+                           Foreground="White"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="Scan QR Code dengan Aplikasi Banking atau E-Wallet" 
+                           FontSize="14" 
+                           Foreground="#CCCCCC"
+                           HorizontalAlignment="Center"
+                           Margin="0,5"/>
+            </StackPanel>
+        </Border>
+        
+        <!-- Content -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- QR Code Display -->
+            <Border Grid.Column="1" 
+                    Background="White" 
+                    CornerRadius="10" 
+                    Padding="20"
+                    BorderBrush="{StaticResource Gray300Brush}"
+                    BorderThickness="1">
+                <StackPanel>
+                    <Image Source="{Binding QrCode}" 
+                           Width="250" 
+                           Height="250"
+                           Stretch="Uniform"/>
+                    
+                    <TextBlock Text="{Binding AmountText}" 
+                               FontSize="24" 
+                               FontWeight="Bold"
+                               Foreground="{StaticResource PrimaryBrush}"
+                               HorizontalAlignment="Center"
+                               Margin="0,15,0,5"/>
+                    
+                    <TextBlock Text="{Binding MerchantName}" 
+                               FontSize="14"
+                               Foreground="{StaticResource Gray600Brush}"
+                               HorizontalAlignment="Center"/>
+                    
+                    <TextBlock Text="Scan dengan QRIS-enabled apps" 
+                               FontSize="12"
+                               Foreground="{StaticResource Gray500Brush}"
+                               HorizontalAlignment="Center"
+                               Margin="0,5,0,0"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+        
+        <!-- Instructions -->
+        <Border Grid.Row="2" Background="{StaticResource Gray200Brush}" Padding="15">
+            <StackPanel>
+                <TextBlock Text="📱 Cara Pembayaran:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBlock Text="1. Buka aplikasi mobile banking atau e-wallet" FontSize="12" Margin="0,2"/>
+                <TextBlock Text="2. Pilih menu Scan QRIS" FontSize="12" Margin="0,2"/>
+                <TextBlock Text="3. Scan QR Code di atas" FontSize="12" Margin="0,2"/>
+                <TextBlock Text="4. Konfirmasi pembayaran" FontSize="12" Margin="0,2"/>
+                <TextBlock Text="5. Tunggu konfirmasi dari kasir" FontSize="12" Margin="0,2" FontWeight="Bold"/>
+            </StackPanel>
+        </Border>
+        
+        <!-- Cancel Button -->
+        <Button Content="Cancel" 
+                Style="{StaticResource DangerButton}"
+                Width="100"
+                Height="40"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,80,20,0"
+                Command="{Binding CancelCommand}"/>
+        
+        <!-- Confirm Button (for operator) -->
+        <Button Content="Confirm Payment" 
+                Style="{StaticResource SuccessButton}"
+                Width="150"
+                Height="50"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="0,0,0,20"
+                Command="{Binding ConfirmCommand}"
+                Visibility="{Binding IsOperatorMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+    </Grid>
+</Page>

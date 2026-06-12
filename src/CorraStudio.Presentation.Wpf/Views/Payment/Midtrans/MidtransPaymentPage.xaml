@@ -1,0 +1,152 @@
+<Page x:Class="CorraStudio.Presentation.Wpf.Views.Payment.Midtrans.MidtransPaymentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Midtrans Payment">
+    
+    <Grid Background="{StaticResource Gray100Brush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Header -->
+        <Border Grid.Row="0" Background="{StaticResource PrimaryBrush}" Padding="20">
+            <StackPanel>
+                <TextBlock Text="Midtrans Payment" 
+                           FontSize="28" 
+                           FontWeight="Bold" 
+                           Foreground="White"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="Pilih metode pembayaran yang tersedia" 
+                           FontSize="14" 
+                           Foreground="#CCCCCC"
+                           HorizontalAlignment="Center"
+                           Margin="0,5"/>
+            </StackPanel>
+        </Border>
+        
+        <!-- Payment Methods -->
+        <ScrollViewer Grid.Row="1">
+            <WrapPanel Margin="20" HorizontalAlignment="Center">
+                
+                <!-- QRIS -->
+                <Border Width="200" Height="150" 
+                        Margin="10" 
+                        Background="White" 
+                        CornerRadius="10"
+                        BorderBrush="{StaticResource Gray300Brush}"
+                        BorderThickness="1"
+                        Cursor="Hand">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource Gray100Brush}"/>
+                                    <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    
+                    <StackPanel VerticalAlignment="Center" Margin="10">
+                        <TextBlock Text="📱" FontSize="48" HorizontalAlignment="Center"/>
+                        <TextBlock Text="QRIS" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10"/>
+                        <TextBlock Text="Scan QR Code" FontSize="12" Foreground="{StaticResource Gray600Brush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Semua E-Wallet & Banking" FontSize="10" Foreground="{StaticResource Gray500Brush}" HorizontalAlignment="Center" Margin="0,5"/>
+                    </StackPanel>
+                </Border>
+                
+                <!-- Credit Card -->
+                <Border Width="200" Height="150" 
+                        Margin="10" 
+                        Background="White" 
+                        CornerRadius="10"
+                        BorderBrush="{StaticResource Gray300Brush}"
+                        BorderThickness="1"
+                        Cursor="Hand">
+                    <StackPanel VerticalAlignment="Center" Margin="10">
+                        <TextBlock Text="💳" FontSize="48" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Credit Card" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10"/>
+                        <TextBlock Text="Visa, Mastercard, JCB" FontSize="12" Foreground="{StaticResource Gray600Brush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Installment available" FontSize="10" Foreground="{StaticResource Gray500Brush}" HorizontalAlignment="Center" Margin="0,5"/>
+                    </StackPanel>
+                </Border>
+                
+                <!-- Virtual Account -->
+                <Border Width="200" Height="150" 
+                        Margin="10" 
+                        Background="White" 
+                        CornerRadius="10"
+                        BorderBrush="{StaticResource Gray300Brush}"
+                        BorderThickness="1"
+                        Cursor="Hand">
+                    <StackPanel VerticalAlignment="Center" Margin="10">
+                        <TextBlock Text="🏦" FontSize="48" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Virtual Account" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10"/>
+                        <TextBlock Text="BCA, Mandiri, BRI, BNI" FontSize="12" Foreground="{StaticResource Gray600Brush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Transfer via ATM/M-Banking" FontSize="10" Foreground="{StaticResource Gray500Brush}" HorizontalAlignment="Center" Margin="0,5"/>
+                    </StackPanel>
+                </Border>
+                
+                <!-- E-Wallet -->
+                <Border Width="200" Height="150" 
+                        Margin="10" 
+                        Background="White" 
+                        CornerRadius="10"
+                        BorderBrush="{StaticResource Gray300Brush}"
+                        BorderThickness="1"
+                        Cursor="Hand">
+                    <StackPanel VerticalAlignment="Center" Margin="10">
+                        <TextBlock Text="📲" FontSize="48" HorizontalAlignment="Center"/>
+                        <TextBlock Text="E-Wallet" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10"/>
+                        <TextBlock Text="OVO, GoPay, Dana" FontSize="12" Foreground="{StaticResource Gray600Brush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Quick & Easy" FontSize="10" Foreground="{StaticResource Gray500Brush}" HorizontalAlignment="Center" Margin="0,5"/>
+                    </StackPanel>
+                </Border>
+                
+                <!-- Convenience Store -->
+                <Border Width="200" Height="150" 
+                        Margin="10" 
+                        Background="White" 
+                        CornerRadius="10"
+                        BorderBrush="{StaticResource Gray300Brush}"
+                        BorderThickness="1"
+                        Cursor="Hand">
+                    <StackPanel VerticalAlignment="Center" Margin="10">
+                        <TextBlock Text="🏪" FontSize="48" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Convenience Store" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10"/>
+                        <TextBlock Text="Alfamart, Indomaret" FontSize="12" Foreground="{StaticResource Gray600Brush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Bayar tunai di kasir" FontSize="10" Foreground="{StaticResource Gray500Brush}" HorizontalAlignment="Center" Margin="0,5"/>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+        </ScrollViewer>
+        
+        <!-- Footer -->
+        <Border Grid.Row="2" Background="{StaticResource Gray200Brush}" Padding="15">
+            <StackPanel>
+                <TextBlock Text="{Binding AmountText}" 
+                           FontSize="20" 
+                           FontWeight="Bold"
+                           Foreground="{StaticResource PrimaryBrush}"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding StatusMessage}" 
+                           FontSize="12"
+                           Foreground="{StaticResource Gray600Brush}"
+                           HorizontalAlignment="Center"
+                           Margin="0,5"/>
+            </StackPanel>
+        </Border>
+        
+        <!-- Cancel Button -->
+        <Button Content="Cancel" 
+                Style="{StaticResource DangerButton}"
+                Width="100"
+                Height="40"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,80,20,0"
+                Command="{Binding CancelCommand}"/>
+    </Grid>
+</Page>

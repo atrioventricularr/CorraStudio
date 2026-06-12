@@ -1,0 +1,95 @@
+<Page x:Class="CorraStudio.Presentation.Wpf.Views.CapturePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid Background="{StaticResource Gray100Brush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        
+        <Border Grid.Row="0" Background="{StaticResource PrimaryBrush}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="📸 CAPTURE MODE" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           Foreground="White"
+                           VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding PhotoCount, StringFormat='Photos: {0}'}" 
+                           FontSize="18"
+                           Foreground="#DDDDDD"
+                           VerticalAlignment="Center"
+                           Margin="30,0,0,0"/>
+            </StackPanel>
+        </Border>
+        
+        <Grid Grid.Row="1" Margin="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Live Preview -->
+            <Border Grid.Column="0" 
+                    Background="Black" 
+                    BorderBrush="{StaticResource Gray300Brush}" 
+                    BorderThickness="2"
+                    CornerRadius="10">
+                <Image Source="{Binding LivePreview}" 
+                       Stretch="Uniform" 
+                       VerticalAlignment="Center"/>
+            </Border>
+            
+            <!-- Controls -->
+            <StackPanel Grid.Column="1" 
+                        Width="250" 
+                        VerticalAlignment="Center"
+                        Margin="20,0,0,0">
+                <TextBlock Text="{Binding Instruction}" 
+                           Style="{StaticResource InstructionText}"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"/>
+                
+                <Button Content="CAPTURE" 
+                        Style="{StaticResource SuccessButton}"
+                        Height="60"
+                        FontSize="20"
+                        Command="{Binding CaptureCommand}"
+                        IsEnabled="{Binding IsCapturing, Converter={StaticResource InverseBoolConverter}}"/>
+                
+                <Button Content="RETAKE" 
+                        Style="{StaticResource WarningButton}"
+                        Height="50"
+                        Command="{Binding RetakeCommand}"
+                        Visibility="{Binding PhotoCount, Converter={StaticResource GreaterThanZeroToVisibility}}"/>
+                
+                <Button Content="CONTINUE" 
+                        Style="{StaticResource PrimaryButton}"
+                        Height="50"
+                        Command="{Binding ContinueCommand}"/>
+                
+                <Button Content="CANCEL" 
+                        Style="{StaticResource DangerButton}"
+                        Height="50"
+                        Command="{Binding CancelCommand}"/>
+            </StackPanel>
+        </Grid>
+        
+        <!-- Countdown Overlay -->
+        <Border Grid.Row="1" 
+                Background="#80000000"
+                Visibility="{Binding IsCountdownActive, Converter={StaticResource BoolToVisibilityConverter}}">
+            <TextBlock Text="{Binding CountdownValue}" 
+                       Style="{StaticResource CountdownText}"
+                       Foreground="White"/>
+        </Border>
+        
+        <Border Grid.Row="2" Background="{StaticResource Gray200Brush}">
+            <TextBlock Text="{Binding StatusMessage}" 
+                       Style="{StaticResource BodyText}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,9 @@
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using CorraStudio.Camera.Abstractions;
+global using CorraStudio.Camera.Models;
+global using CorraStudio.Camera.Services;
+global using CorraStudio.Camera.Events;

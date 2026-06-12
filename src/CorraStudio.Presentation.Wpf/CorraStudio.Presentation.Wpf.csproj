@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>CorraStudio.Presentation.Wpf</RootNamespace>
+    <AssemblyName>CorraStudio.Presentation.Wpf</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>CorraStudio.Presentation.Wpf.App</StartupObject>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CorraStudio.Application\CorraStudio.Application.csproj" />
+    <ProjectReference Include="..\CorraStudio.Camera\CorraStudio.Camera.csproj" />
+    <ProjectReference Include="..\CorraStudio.Printing\CorraStudio.Printing.csproj" />
+    <ProjectReference Include="..\CorraStudio.Rendering\CorraStudio.Rendering.csproj" />
+    <ProjectReference Include="..\CorraStudio.Payments\CorraStudio.Payments.csproj" />
+    <ProjectReference Include="..\CorraStudio.Sync\CorraStudio.Sync.csproj" />
+    <ProjectReference Include="..\CorraStudio.Licensing\CorraStudio.Licensing.csproj" />
+    <ProjectReference Include="..\CorraStudio.Persistence\CorraStudio.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+    <PackageReference Include="System.Windows.Forms" Version="8.0.0" />
+  </ItemGroup>
+</Project>
